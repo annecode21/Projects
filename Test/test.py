@@ -1,12 +1,30 @@
 import random
+#from drugs import diabetes
+#from drugs import benzodiazepines
+#from drugs import antihistamines
 from medicines import drugs_list
 import string
 
+#def get_drug(): #this method can end up creating a very large list if there are multiple lists
+    #medicine = random.choice(diabetes + benzodiazepines + antihistamines)
+    #return medicine.upper()
+
+#def get_drug():
+    #seqs = [diabetes, benzodiazepines, antihistamines]
+    #medicine = random.choice (random.choices (seqs, weights=map(len, seqs))[0])
+    #return medicine.upper()
+
+#def get_valid_drug(drugs):
+    #drug = random.choice(drugs) #randomly chooses a drug
+    #while '-' in drug or ' ' in drug: #as long as statement true, it will keep finding a new word
+        #drug = random.choice(drugs)
+    #return drug.upper()
 
 def get_drug():
     i = random.randint(0, len(drugs_list) -1)
     drug = drugs_list[i]
     return drug
+    #return drug.name.upper()
     
 
 def hangman():
@@ -14,6 +32,7 @@ def hangman():
     drug_name = drug.name.upper()
     drug_type = drug.type.upper()
     drug_url = drug.url
+    # drug = get_valid_drug(drugs)
     drug_letters = set(drug_name) #letters in the drug
     alphabet = set(string.ascii_uppercase) #setting the letters to uppercase
     used_letters = set() #what the user has guessed
@@ -52,7 +71,6 @@ def hangman():
     #gets here when len(word_letter) == 0 OR when lives == 0
     if lives == 0:
         print ('You died, sorry. The drug was', drug_name)
-        print ('To learn more about this drug follow the link: ' + drug_url)
     else:
         print('You guessed the drug', drug_name, 'Yay!!')
         print ('To learn more about this drug follow the link: ' + drug_url)
